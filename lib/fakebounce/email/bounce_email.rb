@@ -1,37 +1,36 @@
 # frozen_string_literal: true
 
+require_relative 'email'
 require_relative 'content'
 
 module FakeBounce
   # Email message with bounce message body.
-  class Email
+  class BounceEmail < Email
     class << self
-      BASE_HEADER_NAMES = %w[X-PM-Message-Stream Subject From To].freeze
+      BASE_HEADER_NAMES = %w[X-PM-Message-Stream X-PM-Tag Subject From To].freeze
       MESSAGE_ID_HEADER_NAMES = %w[X-PM-Message-Id X-PM-RCPT X-PM-Message-Options].freeze
 
-      def build_with_bounce_content(email_to_bounce, type)
+      def tranform_to_bounce(email_to_bounce, type)
         raise "#{MESSAGE_ID_HEADER_NAMES} headers not present." unless message_headers_present?(email_to_bounce)
 
-        email = build_email(type)
-        append_mandatory_headers(email, email_to_bounce)
-        append_message_headers(email, email_to_bounce)
+        email = build(email_to_bounce[:from].to_s, email_to_bounce[:to].to_s, type)
+        copy_mandatory_headers(email, email_to_bounce)
+        copy_message_headers(email, email_to_bounce)
+        append_bounce_message_body(email, type)
         email
       end
 
       private
 
-      def build_email(type)
-        email = Mail.new
-        email['X-PM-Tag'] = type
+      def append_bounce_message_body(email, type)
         email.body = Content.retrieve_from_file(type)
-        email
       end
 
-      def append_mandatory_headers(email_new, email_to_bounce)
+      def copy_mandatory_headers(email_new, email_to_bounce)
         append_headers(email_new, email_to_bounce, BASE_HEADER_NAMES)
       end
 
-      def append_message_headers(email_new, email_to_bounce)
+      def copy_message_headers(email_new, email_to_bounce)
         append_headers(email_new, email_to_bounce, MESSAGE_ID_HEADER_NAMES)
       end
 
