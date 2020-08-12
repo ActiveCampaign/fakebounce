@@ -16,8 +16,9 @@ module FakeBounce
       @bounce_server = Config::Server.new(server_host, server_bounce_address, server_spam_address)
     end
 
-    def generate(email_from, email_to, type)
-      message_id = postmark_api.deliver_email(Email.build(email_from, email_to, type))[:message_id]
+    def generate(email_from, email_to, type, message_stream = nil)
+      email = Email.build(email_from, email_to, type, message_stream)
+      message_id = postmark_api.deliver_email(email)[:message_id]
       generate_from_id(message_id, type)
     end
 
