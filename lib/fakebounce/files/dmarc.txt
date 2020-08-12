@@ -1,0 +1,18 @@
+--Boundary_(ID_my123456789JhJ98764321)
+Content-Type: text/plain
+
+Hello, this is the mail server on xyz.
+
+I am sending you this message to inform you on the delivery status of a
+message you previously sent.  Immediately below you will find a list of
+the affected recipients;  also attached is a Delivery Status Notification
+(DSN) report in standard format, as well as the headers of the original
+message.
+
+--Boundary_(ID_my123456789JhJ98764321)
+
+Action: failed
+Status: 5.0.0 (undefined status)
+Diagnostic-Code: smtp;550 Message rejected due to senders DMARC policy
+
+--Boundary_(ID_my123456789JhJ98764321)--

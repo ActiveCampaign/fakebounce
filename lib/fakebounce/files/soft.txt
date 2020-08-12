@@ -1,0 +1,17 @@
+--Boundary_(ID_my123456789JhJ98764321)
+Content-type: text/plain; charset=us-ascii
+Content-language: en-US
+
+Your message is being returned; it has been enqueued and undeliverable for
+4 days to the following recipients:
+
+Reason: unable to deliver this message after 4 days
+Delivery attempt history for your mail..
+
+--Boundary_(ID_my123456789JhJ98764321)
+Content-type: message/delivery-status
+
+Action: failed
+Status: 4.4.7 (unable to deliver this message after 4 days)
+
+--Boundary_(ID_my123456789JhJ98764321)

@@ -1,0 +1,16 @@
+--Boundary_(ID_my123456789JhJ98764321)
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+
+This is an email abuse report for an email message with the message-id.
+
+For information, please review the top portion of the following page:
+http://postmaster.aol.com/Postmaster.FeedbackLoop.php
+
+For information about AOL E-mail guidelines, please see
+http://postmaster.aol.com/Postmaster.Guidelines.php
+
+If you would like to cancel or change the configuration for your FBL please use the tool located at:
+http://postmaster.aol.com/SupportRequest.FBL.php
+
+--Boundary_(ID_my123456789JhJ98764321)

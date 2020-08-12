@@ -1,0 +1,18 @@
+--Boundary_(ID_my123456789JhJ98764321)
+Content-Type: text/plain
+
+I am sending you this message to inform you on the delivery status of a
+message you previously sent.  Immediately below you will find a list of
+the affected recipients;  also attached is a Delivery Status Notification
+(DSN) report in standard format, as well as the headers of the original
+message.
+
+--Boundary_(ID_my123456789JhJ98764321)
+Content-Type: message/delivery-status
+
+Action: failed
+Status: 4.4.1 (no answer from host)
+X-PowerMTA-BounceCategory: no-answer-from-host
+
+--Boundary_(ID_my123456789JhJ98764321)
+

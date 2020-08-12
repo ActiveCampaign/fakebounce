@@ -1,0 +1,21 @@
+--Boundary_(ID_my123456789JhJ98764321)
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+The mail system
+
+--Boundary_(ID_my123456789JhJ98764321)
+
+Action: failed
+Status: 4.4.6
+Diagnostic-Code: X-Postfix; mail for xyz.com loops back to myself
+
+--Boundary_(ID_my123456789JhJ98764321)

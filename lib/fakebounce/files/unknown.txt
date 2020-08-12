@@ -1,0 +1,15 @@
+--Boundary_(ID_my123456789JhJ98764321)
+Content-Type: text/plain; charset=UTF-8;
+Content-Transfer-Encoding: 8bit
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients.
+
+The mail system
+
+--Boundary_(ID_my123456789JhJ98764321)
+Content-Type: message/rfc822
+Content-Description: Undelivered Message
+
+--Boundary_(ID_my123456789JhJ98764321)--
+
