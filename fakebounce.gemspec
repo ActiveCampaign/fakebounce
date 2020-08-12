@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/wildbit/fakebounce'
   s.require_paths = ['lib']
   s.required_rubygems_version = '>= 2.6.0'
-  s.add_dependency 'mail','~> 2.7', '>= 2.7.1'
+  s.add_dependency 'mail', '~> 2.7', '>= 2.7.1'
   s.add_dependency 'postmark', '~> 1.21', '>= 1.21.1'
   s.add_development_dependency 'pry', '~> 0.13'
   s.add_development_dependency 'rspec', '~> 3.9.0'

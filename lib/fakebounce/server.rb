@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 module FakeBounce
   # Bounce server
   class Server
@@ -9,10 +8,10 @@ module FakeBounce
                   :spam_address
 
     DEFAULT_SETTINGS = {
-        address: 'localhost',
-        port: 25,
-        domain: 'HELO',
-        return_response: true
+      address: 'localhost',
+      port: 25,
+      domain: 'HELO',
+      return_response: true
     }.freeze
 
     def initialize(host, bounce_address, spam_address)
