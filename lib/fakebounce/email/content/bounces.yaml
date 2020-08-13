@@ -45,6 +45,11 @@ undeliverable:
   Status:                     4.4.1 (no answer from host)
   X-PowerMTA-BounceCategory:  no-answer-from-host
 
+autoresponder:
+  Action: failed
+  Status: 5.0.0
+  Diagnostic-Code: smtp; The email account that you tried to reach does not exist. Please try double-checking the recipient's email address for typos or unnecessary spaces. Learn more at https://support.google.com/mail/answer/6596
+
 unsubscribe:
   Action:                     failed
   Status:                     5.1.10
