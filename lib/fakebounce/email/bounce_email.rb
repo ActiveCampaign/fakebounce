@@ -2,7 +2,6 @@
 
 require_relative 'email'
 require_relative 'content/content'
-require 'pry'
 
 module FakeBounce
   # Email message with bounce message body.
