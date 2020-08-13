@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'email'
-require_relative 'content'
+require_relative 'content/content'
 require 'pry'
 
 module FakeBounce
