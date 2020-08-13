@@ -2,6 +2,7 @@
 
 require_relative 'email'
 require_relative 'content'
+require 'pry'
 
 module FakeBounce
   # Email message with bounce message body.
@@ -22,8 +23,12 @@ module FakeBounce
 
       private
 
+      def root_path
+        File.join(File.dirname(__FILE__), '/files')
+      end
+
       def append_bounce_message_body(email, type)
-        email.body = Content.retrieve_from_file(type)
+        email.body = Content.retrieve_from_yaml(type)
       end
 
       def copy_mandatory_headers(email_new, email_to_bounce)

@@ -1,0 +1,54 @@
+dmarc:
+  Action:                     failed
+  Status:                     5.0.0 (undefined status)
+  Diagnostic-Code:            smtp;550 Message rejected due to senders DMARC policy
+
+dnserror:
+  Action:                     failed
+  Status:                     4.4.6
+  Diagnostic-Code:            X-Postfix; mail for xyz.com loops back to myself
+
+ispblock:
+  Action:                     failed
+  Status:                     5.0.0 (undefined status)
+  Diagnostic-Code:            smtp;554 Message not allowed - [PH01] Email not accepted for policy reasons.
+  X-PowerMTA-BounceCategory:  policy-related
+
+notification:
+  Action:                     failed
+  Status:                     5.7.1 (delivery not authorized)
+  Diagnostic-Code:            smtp;554 5.7.1 Spam detected by content scanner. Message rejected.
+
+soft:
+  Action:                     failed
+  Status:                     4.4.7 (unable to deliver this message after 4 days)
+
+spam:
+  Action:                     failed
+
+subscribe:
+  Action:                     failed
+  Status:                     5.3.5
+  Diagnostic-Code:            SMTP; List has no subscribers
+
+virus:
+  Action:                     failed
+  Status:                     5.0.0 (undefined status)
+  Diagnostic-Code:            smtp;550 This message contains a virus or other harmful content (Heuristics.Safebrowsing.Suspected-malware_safebrowsing.clamav.net)
+
+unknown:
+  Content-Type:               message/rfc822
+  Content-Description:        Undelivered Message
+
+undeliverable:
+  Action:                     failed
+  Status:                     4.4.1 (no answer from host)
+  X-PowerMTA-BounceCategory:  no-answer-from-host
+
+unsubscribe:
+  Action:                     failed
+  Status:                     5.1.10
+  Diagnostic-Code:            smtp;550 5.1.10 RESOLVER.ADR.RecipientNotFound; Recipient not found by SMTP address lookup
+
+
+

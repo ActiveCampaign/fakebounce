@@ -8,14 +8,19 @@ module FakeBounce
         load_from_file(filename)
       end
 
+      def retrieve_from_yaml(type)
+        bounces = YAML.load_file("#{root_path}/bounces.yaml")
+        bounces[type.to_s].map { |k,v| "#{k}: #{v}" }.join("\n")
+      end
+
       private
 
       def root_path
-        File.join(File.dirname(__FILE__), '/files')
+        File.dirname(__FILE__)
       end
 
       def load_from_file(filename)
-        path = "#{root_path}/#{filename}.txt"
+        path = "#{root_path}/files/#{filename}.txt"
         raise "File missing: #{filename}.txt" unless File.exist?(path)
 
         File.read(path)
