@@ -1,3 +1,5 @@
+# contains list of available bounce types, with headers that trigger a bounce.
+
 dmarc:
   Action:                     failed
   Status:                     5.0.0 (undefined status)

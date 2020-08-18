@@ -7,15 +7,14 @@ module FakeBounce
   # Email message with bounce message body.
   class BounceEmail < Email
     class << self
-      BASE_HEADER_NAMES = %w[X-PM-Message-Stream X-PM-Tag Subject From To].freeze
-      MESSAGE_ID_HEADER_NAMES = %w[X-PM-Message-Id X-PM-RCPT X-PM-Message-Options].freeze
+      BASE_HEADER_NAMES = %w[Subject From To].freeze
 
       def tranform_to_bounce(email_to_bounce, type)
-        raise "#{MESSAGE_ID_HEADER_NAMES} headers not present." unless message_headers_present?(email_to_bounce)
+        raise 'Postmark headers not present.' if postmark_header_names(email_to_bounce).empty?
 
         email = build(email_to_bounce[:from].to_s, email_to_bounce[:to].to_s, type)
         copy_mandatory_headers(email, email_to_bounce)
-        copy_message_headers(email, email_to_bounce)
+        copy_postmark_headers(email, email_to_bounce)
         append_bounce_message_body(email, type)
         email
       end
@@ -34,8 +33,8 @@ module FakeBounce
         append_headers(email_new, email_to_bounce, BASE_HEADER_NAMES)
       end
 
-      def copy_message_headers(email_new, email_to_bounce)
-        append_headers(email_new, email_to_bounce, MESSAGE_ID_HEADER_NAMES)
+      def copy_postmark_headers(email_new, email_to_bounce)
+        append_headers(email_new, email_to_bounce, postmark_header_names(email_to_bounce))
       end
 
       def append_headers(email_new, email_to_bounce, header_names)
@@ -43,8 +42,12 @@ module FakeBounce
                     .each { |header_name| email_new[header_name] = email_to_bounce[header_name] }
       end
 
-      def message_headers_present?(email)
-        (MESSAGE_ID_HEADER_NAMES.map(&:downcase) - email.header.map { |e| e.name.downcase }).empty?
+      def postmark_header_names(email)
+        email_header_names(email).select { |h| h.downcase.include?('x-pm') }
+      end
+
+      def email_header_names(email)
+        email.header.fields.map(&:name)
       end
     end
   end

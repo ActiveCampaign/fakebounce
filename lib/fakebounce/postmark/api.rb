@@ -12,10 +12,6 @@ module FakeBounce
       @client = Postmark::ApiClient.new(api_token, host: host)
     end
 
-    def deliver_email(email)
-      client.deliver_message(email)
-    end
-
     def retrieve_email(message_id, timeout_minutes)
       start = Time.now
       while Time.now - start < timeout_minutes * 60

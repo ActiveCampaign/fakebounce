@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-require_relative 'fakebounce/handler'
+require_relative 'fakebounce/bounce'

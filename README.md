@@ -1,6 +1,10 @@
 # FakeBounce
 
-Tool for generating bounces
+Tool for generating bounces for testing purposes. 
+
+## Usage
+
+Please see the wiki for quick start tutorial and instructions how to generate bounce for sent email messages within Postmark.
 
 ## Installation
 
@@ -9,13 +13,8 @@ You can use the library with a Bundler.
 With Bundler:
 
 ``` ruby
-gem 'fabounce', git: 'https://github.com/wildbit/fakebounce.git'
+gem 'fakebounce', git: 'https://github.com/wildbit/fakebounce.git'
 ```
-
-## Issues & Comments
-
-Feel free to contact us if you encounter any issues with the library. 
-Please leave all comments, bugs, requests and issues on the Issues page.  
 
 ## License
 
