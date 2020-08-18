@@ -18,7 +18,7 @@ gem 'fakebounce', git: 'https://github.com/wildbit/fakebounce.git'
 
 ## License
 
-FakeMail library is released under the [MIT](http://www.opensource.org/licenses/mit-license.php) license. 
+FakeBounce library is released under the [MIT](http://www.opensource.org/licenses/mit-license.php) license. 
 
 ## Copyright
 
