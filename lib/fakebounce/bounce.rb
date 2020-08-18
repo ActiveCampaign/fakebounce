@@ -43,7 +43,7 @@ module FakeBounce
     end
 
     def server_init
-      Net::SMTP.new(server.settings[:address], server.settings[:port])
+      Net::SMTP.new(server.settings[:host], server.settings[:port])
     end
   end
 end
