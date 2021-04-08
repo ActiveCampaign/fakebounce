@@ -8,7 +8,7 @@ module FakeBounce
   class PostmarkAPI
     attr_accessor :client
 
-    def initialize(api_token, host)
+    def initialize(api_token, host = Postmark::HttpClient::DEFAULTS[:host])
       @client = Postmark::ApiClient.new(api_token, host: host)
     end
 

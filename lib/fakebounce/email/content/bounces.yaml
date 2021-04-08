@@ -25,6 +25,11 @@ soft:
   Action:                     failed
   Status:                     4.4.7 (unable to deliver this message after 4 days)
 
+hard:
+  Action:                     failed
+  Status:                     "5.1.2 (bad destination system: no such domain)"
+  X-PowerMTA-BounceCategory:  bad-domain
+
 spam:
   Action:                     failed
 
@@ -57,5 +62,9 @@ unsubscribe:
   Status:                     5.1.10
   Diagnostic-Code:            smtp;550 5.1.10 RESOLVER.ADR.RecipientNotFound; Recipient not found by SMTP address lookup
 
-
-
+priority_gmail_unsolicited:
+  Action:                     failed
+  Status:                     5.7.1 (bad destination mailbox address)
+  Remote-MTA:                 dns;aspmx.l.google.com (142.250.11.27)
+  Diagnostic-Code:            smtp;550 5.7.1 [142.250.11.27] Our system has detected that this message is likely unsolicited mail. To reduce the amount of spam sent to Gmail, this message has been blocked. Please visit https://support.google.com/mail/?p=UnsolicitedMessageError  for more information. [ID] - gsmtp
+  X-PowerMTA-BounceCategory:  bad-mailbox
