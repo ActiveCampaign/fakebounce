@@ -53,18 +53,54 @@ undeliverable:
   X-PowerMTA-BounceCategory:  no-answer-from-host
 
 autoresponder:
-  Action: failed
-  Status: 5.0.0
-  Diagnostic-Code: smtp; The email account that you tried to reach does not exist. Please try double-checking the recipient's email address for typos or unnecessary spaces. Learn more at https://support.google.com/mail/answer/6596
+  Action:                     failed
+  Status:                     5.0.0
+  Diagnostic-Code:            smtp; The email account that you tried to reach does not exist. Please try double-checking the recipient's email address for typos or unnecessary spaces. Learn more at https://support.google.com/mail/answer/6596
 
 unsubscribe:
   Action:                     failed
   Status:                     5.1.10
   Diagnostic-Code:            smtp;550 5.1.10 RESOLVER.ADR.RecipientNotFound; Recipient not found by SMTP address lookup
 
-priority_gmail_unsolicited:
+gmail_unsolicited:
   Action:                     failed
   Status:                     5.7.1 (bad destination mailbox address)
   Remote-MTA:                 dns;aspmx.l.google.com (142.250.11.27)
   Diagnostic-Code:            smtp;550 5.7.1 [142.250.11.27] Our system has detected that this message is likely unsolicited mail. To reduce the amount of spam sent to Gmail, this message has been blocked. Please visit https://support.google.com/mail/?p=UnsolicitedMessageError  for more information. [ID] - gsmtp
   X-PowerMTA-BounceCategory:  bad-mailbox
+
+gmail_temp_rep:
+  Action:                     failed
+  Status:                     4.7.0 (our system has detected that this message is suspicious)
+  Remote-MTA:                 dns;aspmx.l.google.com (172.217.169.174)
+  Diagnostic-Code:            smtp;421 4.7.0 [172.217.169.174] Our system has detected that this message is suspicious due to the very low reputation of the sending domain. To best protect our users from spam, the message has been blocked. Please visit https://support.google.com/mail/answer/188131 for more information. - gsmtp
+
+gmail_perm_rep:
+  Action:                     failed
+  Status:                     4.7.0 (our system has detected that this message is suspicious)
+  Remote-MTA:                 dns;aspmx.l.google.com (172.217.169.174)
+  Diagnostic-Code:            smtp;550 4.7.0 [172.217.169.174] Our system has detected that this message is suspicious due to the very low reputation of the sending domain. To best protect our users from spam, the message has been blocked. Please visit https://support.google.com/mail/answer/188131 for more information. - gsmtp
+
+gmail_content_rep:
+  Action:                     failed
+  Status:                     4.7.0 (nature of the content bad)
+  Remote-MTA:                 dns;aspmx.l.google.com (172.217.169.174)
+  Diagnostic-Code:            smtp;421 4.7.0 [172.217.169.174] Our system has detected that this message is suspicious due to the nature of the content and/or the links within. To best protect our users from spam, the message has been blocked. Please visit https://support.google.com/mail/answer/188131 for more information. - gsmtp
+
+yahoo_content_rep:
+  Action:                     failed
+  Status:                     4.7.0 (temporarily deferred due to user complaints)
+  Remote-MTA:                 dns;aspmx.l.google.com (172.217.169.174)
+  Diagnostic-Code:            smtp;421 4.7.0 [TSS04] Messages from x.xx.xx.xx.xx temporarily deferred due to user complaints - 4.16.55.1; see https://help.yahoo.com/kb/postmaster/SLN3434.html
+
+spamhaus_link:
+  Action:                     failed
+  Status:                     5.7.1 (present in the spamhaus dbl)
+  Remote-MTA:                 dns;aspmx.l.google.com (172.217.169.174)
+  Diagnostic-Code:            smtp;550 5.7.1 Your email was rejected due to having a domain present in the Spamhaus DBL -- see https://www.spamhaus.org/dbl/
+
+spamhaus_from:
+  Action:                     failed
+  Status:                     5.7.1 (domain is listed in spamhaus)
+  Remote-MTA:                 dns;aspmx.l.google.com (172.217.169.174)
+  Diagnostic-Code:            smtp;550 5.7.1 Service unavailable, MailFrom domain is listed in Spamhaus. To request removal from this list see https://www.spamhaus.org/query/lookup/ (S8002) [#.eop-nam02.prod.protection.outlook.com]
