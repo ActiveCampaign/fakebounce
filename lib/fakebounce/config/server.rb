@@ -17,7 +17,7 @@ module FakeBounce
       end
 
       def bounce_email_address(type)
-        type.to_s.include?('spam') ? spam_address : bounce_address
+        type.to_s.downcase.strip == 'spam' ? spam_address : bounce_address
       end
     end
   end
