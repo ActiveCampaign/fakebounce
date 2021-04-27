@@ -44,7 +44,7 @@ module FakeBounce
       end
 
       def append_final_recipient_header(email)
-        email['Final-Recipient'] = "rfc822;#{email[:to]}"
+        email['Final-Recipient'] = email[:to].to_s
       end
 
       def postmark_header_names(email)
