@@ -16,6 +16,7 @@ module FakeBounce
         copy_mandatory_headers(email, email_to_bounce)
         copy_postmark_headers(email, email_to_bounce)
         append_bounce_message_body(email, type)
+        append_final_recipient_header(email)
         email
       end
 
@@ -40,6 +41,10 @@ module FakeBounce
       def append_headers(email_new, email_to_bounce, header_names)
         header_names.reject { |header_name| email_to_bounce[header_name].nil? }
                     .each { |header_name| email_new[header_name] = email_to_bounce[header_name] }
+      end
+
+      def append_final_recipient_header(email)
+        email['Final-Recipient'] = "rfc822;#{email[:to]}"
       end
 
       def postmark_header_names(email)
