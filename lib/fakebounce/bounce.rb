@@ -4,6 +4,7 @@ require_relative 'email/email'
 require_relative 'email/bounce_email'
 require_relative 'config/server'
 require_relative 'postmark/api'
+require_relative 'extensions/ruby3/mail/network/delivery_methods/smtp'
 
 module FakeBounce
   # Class that allows generating a bounce event
