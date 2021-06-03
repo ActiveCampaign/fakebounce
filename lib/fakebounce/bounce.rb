@@ -4,7 +4,6 @@ require_relative 'email/email'
 require_relative 'email/bounce_email'
 require_relative 'config/server'
 require_relative 'postmark/api'
-require_relative 'extensions/ruby3/mail/network/delivery_methods/smtp'
 
 module FakeBounce
   # Class that allows generating a bounce event
@@ -44,7 +43,9 @@ module FakeBounce
     end
 
     def server_init
-      Net::SMTP.new(server.settings[:host], server.settings[:port])
+      smtp = Net::SMTP.new(server.settings[:host], server.settings[:port])
+      smtp.disable_starttls
+      smtp
     end
   end
 end
