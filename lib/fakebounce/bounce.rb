@@ -37,7 +37,7 @@ module FakeBounce
 
     def send_email_to_server(email, type)
       sending = server_init
-      sending.start('HELO', tls_verify: false)
+      sending.start(helo: 'HELO', tls_verify: false)
       sending.send_message(email.to_s, email[:from].to_s, server.bounce_email_address(type))
       sending.finish
     end
