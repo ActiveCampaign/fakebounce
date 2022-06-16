@@ -13,13 +13,9 @@ You can use the library with a Bundler.
 With Bundler:
 
 ``` ruby
-gem 'fakebounce', git: 'https://github.com/wildbit/fakebounce.git'
+gem 'fakebounce', git: 'https://github.com/ActiveCampaign/fakebounce.git'
 ```
 
 ## License
 
-FakeBounce library is released under the [MIT](http://www.opensource.org/licenses/mit-license.php) license. 
-
-## Copyright
-
-Copyright © 2020 Wildbit LLC.
+FakeBounce library is released under the [MIT](http://www.opensource.org/licenses/mit-license.php) license.
