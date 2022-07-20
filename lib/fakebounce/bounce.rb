@@ -10,15 +10,15 @@ module FakeBounce
   # by sending a bounce message to the bounce server.
   class Bounce
     attr_accessor :postmark_client,
-                  :server
+                  :bounce_server
 
     def self.types
       Content.bounces.keys
     end
 
-    def initialize(server, postmark_client = nil)
-      @server = server
-      @postmark_client = postmark_client
+    def initialize(bounce_server_settings, postmark_api_settings)
+      init_bounce_server(bounce_server_settings)
+      init_postmark_client(postmark_api_settings)
     end
 
     def generate(email_from, email_to, type, message_stream = nil)
@@ -29,21 +29,18 @@ module FakeBounce
 
     def generate_from_id(message_id, type)
       email = postmark_client.retrieve_email(message_id, 5)
-      bounce_email = BounceEmail.tranform_to_bounce(email, type)
-      send_email_to_server(bounce_email, type)
+      bounce_email = BounceEmail.transform_content_to_bounce(email, type)
+      bounce_server.send_email(bounce_email, type)
     end
 
     private
 
-    def send_email_to_server(email, type)
-      sending = server_init
-      sending.start(helo: 'HELO', tls_verify: false)
-      sending.send_message(email.to_s, email[:from].to_s, server.bounce_email_address(type))
-      sending.finish
+    def init_postmark_client(settings)
+      @postmark_client = PostmarkAPI.new(settings.fetch(:api_token), settings.fetch(:host))
     end
 
-    def server_init
-      Net::SMTP.new(server.settings[:host], server.settings[:port])
+    def init_bounce_server(settings)
+      @bounce_server = Server.new(settings.fetch(:host), settings.fetch(:bounce_address), settings.fetch(:spam_address))
     end
   end
 end

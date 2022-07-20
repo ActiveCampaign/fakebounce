@@ -16,8 +16,21 @@ module FakeBounce
         @spam_address = spam_address
       end
 
+      def send_email(email, type)
+        sending = open_smtp_connection
+        sending.start(helo: 'HELO', tls_verify: false)
+        sending.send_message(email.to_s, email[:from].to_s, bounce_email_address(type))
+        sending.finish
+      end
+
       def bounce_email_address(type)
         type.to_s.downcase.strip == 'spam' ? spam_address : bounce_address
+      end
+
+      private
+
+      def open_smtp_connection
+        Net::SMTP.new(settings.fetch(:host), settings.fetch(:port))
       end
     end
   end

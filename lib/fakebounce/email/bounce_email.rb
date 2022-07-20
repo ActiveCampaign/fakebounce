@@ -9,7 +9,7 @@ module FakeBounce
     class << self
       BASE_HEADER_NAMES = %w[Subject From To].freeze
 
-      def tranform_to_bounce(email_to_bounce, type)
+      def transform_content_to_bounce(email_to_bounce, type)
         raise 'Postmark headers not present.' if postmark_header_names(email_to_bounce).empty?
 
         email = build(email_to_bounce[:from].to_s, email_to_bounce[:to].to_s, type)
