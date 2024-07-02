@@ -18,7 +18,7 @@ module FakeBounce
 
       def send_email(email, type)
         sending = open_smtp_connection
-        sending.start(helo: 'HELO', tls_verify: false)
+        sending.start(helo: 'HELO')
         sending.send_message(email.to_s, email[:from].to_s, bounce_email_address(type))
         sending.finish
       end
