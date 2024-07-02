@@ -41,8 +41,15 @@ module FakeBounce
       end
 
       def append_headers(email_new, email_to_bounce, header_names)
-        header_names.reject { |header_name| email_to_bounce[header_name].nil? }
-                    .each { |header_name| email_new[header_name].value= email_to_bounce[header_name].value }
+        header_names.
+          reject { |header_name| email_to_bounce[header_name].nil? }.
+          each do |header_name|
+            if email_new[header_name].nil?
+              email_new[header_name] = email_to_bounce[header_name].value
+            else
+              email_new[header_name].value= email_to_bounce[header_name].value
+            end
+          end
       end
 
       def final_recipient_header(email)
