@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'mail', '~>2.7.1'
+gem 'mail', '~>2.8.0'
 gem 'postmark', '~>1.21.1'
 
 group :test do
